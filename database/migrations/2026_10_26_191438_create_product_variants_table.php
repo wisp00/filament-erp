@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -22,8 +23,9 @@ return new class extends Migration
             $table->decimal('avg_cost', 15, 2)->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-            $table->check('variant_stock_non_negative CHECK (current_stock >= 0');
+            
         });
+        DB::statement('ALTER TABLE product_variants ADD CONSTRAINT variant_stock_non_negative CHECK (current_stock >= 0 )');
     }
 
     /**
