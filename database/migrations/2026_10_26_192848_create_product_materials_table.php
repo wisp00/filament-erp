@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -18,8 +19,8 @@ return new class extends Migration
             $table->decimal('quantity_per_unit', 15, 2)->default(0);
             $table->string('note')->nullable();
             $table->timestamps();
-            $table->check('quantity_per_unit_non_negative CHECK (quantity_per_unit >= 0');
         });
+        DB::statement('ALTER TABLE product_materials ADD CONSTRAINT quantity_per_unit_non_negative CHECK (quantity_per_unit >= 0)');
     }
 
     /**
