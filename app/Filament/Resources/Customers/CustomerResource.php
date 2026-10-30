@@ -21,9 +21,11 @@ class CustomerResource extends Resource
 
     protected static string|UnitEnum|null $navigationGroup = 'Master Data';
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::UserGroup;
 
     protected static ?string $recordTitleAttribute = 'Customer';
+
+    // protected static ?string $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {

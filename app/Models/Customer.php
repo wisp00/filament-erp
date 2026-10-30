@@ -3,13 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
-    protected $fillable = ['name','address','phone_number','email','contact_person','is_active'];
-    protected $casts = ['is_active' => 'boolean'];
-    public function sale(){
-        return $this -> hasMany(Sale::class); 
+    protected $fillable = [
+        'name',
+        'address',
+        'phone_number',
+        'email',
+        'contact_person',
+        'is_active',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
+    }
+
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Sale::class);
     }
 }
-

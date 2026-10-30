@@ -13,15 +13,12 @@ class VendorForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('address')
-                    ->required(),
-                TextInput::make('phone_number')
-                    ->required(),
+                TextInput::make('address'),
+                TextInput::make('phone_Number'),
                 TextInput::make('email')
                     ->label('Email address')
-                    ->email()
-                    ->required(),
-                TextInput::make('pic')
+                    ->email(),
+                TextInput::make('contact_person')
                     ->required(),
             ]);
     }

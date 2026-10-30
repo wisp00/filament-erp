@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('estimated_finish_date');
             $table->date('actual_finish_date');
             $table->string('status')->default('planned'); //planned, cutting, sewing, finishing, completed, canceled
-            $table->foreignId('created_by')->constrained('users', 'user_id')->nullOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->string('note')->nullable();
             $table->timestamps();
         });

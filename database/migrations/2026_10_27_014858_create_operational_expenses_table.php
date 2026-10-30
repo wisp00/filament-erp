@@ -15,13 +15,13 @@ return new class extends Migration
         Schema::create('operational_expenses', function (Blueprint $table) {
             $table->id();
             $table->date('expense_date')->index();
-            $table->foreignId('account_id')->constrained('chart_of_accounts', 'chart_of_account_id');
+            $table->foreignId('account_id')->constrained('chart_of_accounts');
             $table->foreignId('payment_account_id')->constrained('payment_accounts');
             $table->decimal('amount', 15, 2);
             $table->string('description')->nullable();
             $table->string('receipt_path')->nullable();
-            $table->foreignId('employee_id')->constrained('employees')->nullOnDelete();
-            $table->foreignId('created_by')->constrained('users','user_id')->nullOnDelete(); //creted by
+            $table->foreignId('employee_id')->nullable()->constrained('employees')->nullOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete(); //creted by
             $table->timestamps();
         });
         DB::statement('ALTER TABLE operational_expenses ADD CONSTRAINT expense_amount_posistive CHECK (AMOUNT > 0 )');

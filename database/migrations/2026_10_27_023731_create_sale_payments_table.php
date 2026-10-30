@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('payment_method'); //cash, bank_transfer, credit_card, etc.
             $table->string('reference')->nullable();
             $table->string('note')->nullable();
-            $table->foreignId('created_by')->constrained('users','user_id')->nullOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
         DB::statement('ALTER TABLE sale_payments ADD CONSTRAINT sale_payment_positive CHECK (amount > 0)');

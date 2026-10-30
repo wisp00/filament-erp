@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('account_id')->constrained('chart_of_accounts', 'chart_of_account_id');
+            $table->foreignId('chart_of_accoun_id')->constrained('chart_of_accounts');
             $table->string('name');
             $table->string('type'); //cash, bank, credit_card, ewallet, giro
             $table->string('account_number')->nullable();

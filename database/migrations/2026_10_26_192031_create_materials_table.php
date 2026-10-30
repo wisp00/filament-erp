@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('category')->index();
             $table->string('material_type');
-            $tbale->string('variety');
+            $table->string('variety');
             $table->string('color');
-            $tbale->integer('gsm')->nullabale();
+            $table->integer('gsm')->nullabale();
             $table->string('uom');
             $table->decimal('min_stock', 15, 2)->default(0);
             $table->decimal('stock_on_hand', 15, 2)->default(0);

@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('production_costs', function (Blueprint $table) {
             $table->id();
-            $table->ForeignId('production_order_id')->constrained('production_orders')->cascadeOnDelte();
+            $table->foreignId('production_order_id')->constrained('production_orders')->cascadeOnDelete();
             $table->decimal('material_cost', 15, 2)->default(0);
             $table->decimal('labor_cost', 15, 2)->default(0);
             $table->decimal('other_cost', 15, 2)->default(0);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('finalized_at');
             $table->timestamps();
         });
-        DB::statement('ALTER TABLE production_costs CHECK (total_cost = material_cost + labor_cost + other_cost + overheard_cost)');
+        DB::statement('ALTER TABLE production_costs ADD CONSTRAINT cost_total_consisten CHECK (total_cost = material_cost + labor_cost + other_cost + overhead_cost)');
     }
 
     /**

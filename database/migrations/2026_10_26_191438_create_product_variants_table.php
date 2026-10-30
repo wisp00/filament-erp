@@ -23,7 +23,6 @@ return new class extends Migration
             $table->decimal('avg_cost', 15, 2)->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-            
         });
         DB::statement('ALTER TABLE product_variants ADD CONSTRAINT variant_stock_non_negative CHECK (current_stock >= 0 )');
     }

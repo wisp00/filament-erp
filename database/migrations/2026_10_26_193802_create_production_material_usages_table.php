@@ -14,13 +14,12 @@ return new class extends Migration
     {
         Schema::create('production_material_usages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('production_order_id')->constrained('production_orders');
-            $table->foreignId('material_id')->constrained('materials');
+            $table->foreignId('production_order_id')->constrained('production_orders')->unique();
+            $table->foreignId('material_id')->constrained('materials')->unique();
             $table->decimal('planned_quantity');
             $table->decimal('actual_quantity');
             $table->decimal('unit_cost', 15, 2);
             $table->timestamps();
-            $table->unique(['production_order_id', 'material_id']);
         });
         DB::statement('ALTER TABLE production_material_usages ADD CONSTRAINT usage_qty_non_negative CHECK (planned_quantity >= 0 AND actual_quantity >= 0)');
     }

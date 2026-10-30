@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('chart_of_accounts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_account_id')->constrained('chart_of_accounts')->nullOnDelete();
+            $table->integer('parent_account_id')->constrained('chart_of_accounts')->nullOnDelete();
             $table->string('code')->unique();
             $table->string('name');
             $table->string('type'); //asset, liability, equity, revenue,cogs, expense
@@ -25,7 +25,6 @@ return new class extends Migration
             $table->timestamps();
         });
         DB::statement("ALTER TABLE chart_of_accounts ADD CONSTRAINT coa_type_valid CHECK (type IN ('asset', 'liability', 'equity', 'revenue', 'cogs', 'expense'))");
-        
         DB::statement("ALTER TABLE chart_of_accounts ADD CONSTRAINT coa_normal_balance_valid CHECK (normal_balance IN ('debit', 'credit'))");
     }
 

@@ -15,13 +15,13 @@ return new class extends Migration
         Schema::create('journal_lines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('journal_entry_id')->constrained('journal_entries');
-            $table->foreignId('account_id')->constrained('chart_of_accounts','chart_of_account_id');
+            $table->foreignId('account_id')->constrained('chart_of_accounts');
             $table->decimal('debit', 15, 2)->default(0);
             $table->decimal('credit', 15, 2)->default(0);
             $table->string('description')->nullable();
             $table->timestamps();
         });
-        DB::statement('ALTER TABLE journa;_lines ADD CONSTRAINT journal_line_one_side CHECK(debit > 0 AND credit > 0 OR credit > 0 AND debit > 0)');
+        DB::statement('ALTER TABLE journal_lines ADD CONSTRAINT journal_line_one_side CHECK( debit > 0 AND credit > 0 OR credit > 0 AND debit > 0)');
     }
 
     /**

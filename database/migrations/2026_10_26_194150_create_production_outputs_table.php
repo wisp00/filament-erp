@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('production_outputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('production_order_id')->constrained('production_orders');
-            $table->foreignId('product_variant_id')->constrained('product_variants');
+            $table->foreignId('production_order_id')->constrained('production_orders')->unique();
+            $table->foreignId('product_variant_id')->constrained('product_variants')->unique();
             $table->integer('quantity')->default(0);
             $table->integer('defective_quantity')->default(0);
             $table->date('produced_date');
             $table->timestamps();
-            $table->uniqe(['production_order_id', 'product_varian_id']);
         });
 
     }

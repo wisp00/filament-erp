@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('reference_type'); //purchase, sales, production, payroll, etc.
             $table->integer('reference_id');
-            $table->foreignId('reverses_entry_id')->constrained('journal_entries', 'journal_entry_id');
-            $table->foreignId('created_by')->constrained('users','user_id');
+            $table->foreignId('reverses_entry_id')->constrained('journal_entries');
+            $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });
     }

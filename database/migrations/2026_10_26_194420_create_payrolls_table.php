@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('payment_method'); //cash, bank_transfer, credit_card, etc.
             $table->foreignId('payment_account_id')->constrained('payment_accounts');
             $table->string('description')->nullable();
-            $table->foreignId('created_by')->constrained('users','user_id')->nullOnDelete(); //created by
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete(); //created by
             $table->timestamps();
         });
         DB::statement('ALTER TABLE payrolls ADD CONSTRAINT payroll_total_consistent CHECK (total_paid = base_salary + production_wages + bonus - deductions)');

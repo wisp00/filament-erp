@@ -28,7 +28,7 @@ return new class extends Migration
             $table->decimal('total', 15, 2)->default(0);
             $table->decimal('amount_paid', 15, 2)->default(0);
             $table->string('note')->nullable();
-            $table->foreignId('created_by')->constrained('users','user_id')->nullOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
         DB::statement('ALTER TABLE purchases ADD CONSTRAINT purchase_total_consistent CHECK (total = subtotal - discount + shipping_cost AND amount_paid >= 0)');

@@ -8,4 +8,14 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCustomer extends CreateRecord
 {
     protected static string $resource = CustomerResource::class;
+
+    protected function getSaveNotificationTitle(): ?string
+    {
+        return 'Category asved succesfully';
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

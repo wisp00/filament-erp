@@ -16,14 +16,13 @@ class VendorsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('address')
-                    ->searchable(),
+                TextColumn::make('address'),    
                 TextColumn::make('phone_number')
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
-                TextColumn::make('pic')
+                TextColumn::make('contact_person')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

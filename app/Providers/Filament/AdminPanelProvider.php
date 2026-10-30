@@ -40,11 +40,9 @@ class AdminPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
                 navigationGroup::make()->label('Master Data'),
-                navigationGroup::make()->label('Inventory'),
-                navigationGroup::make()->label('Production'),
-                navigationGroup::make()->label('Sale'),
-                navigationGroup::make()->label('Accounting'),
-                navigationGroup::make()->label('Setting')
+                navigationGroup::make()->label('Catalog & Inventory'),
+                navigationGroup::make()->label('Transaction'),
+                navigationGroup::make()->label('Finance'),
             ])
 
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
